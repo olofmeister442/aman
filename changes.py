@@ -190,3 +190,66 @@ unique_2 = models.TextField(null=True,
 
 --------------------------------------------------------------------------------
 
+urls.py
+
+--------------------------------------------------------------------------------
+
+    url(r'^VerifyGrid', views.VerifyGrid),
+
+--------------------------------------------------------------------------------
+
+views.py:
+
+class VerifyGridAPIView(APIView):
+    authentication_classes = (
+        CsrfExemptSessionAuthentication, BasicAuthentication)
+
+    def post(self, request):        
+        data = request.data
+
+        val1 = data.get('val1')
+        val2 = data.get('val2')
+        val3 = data.get('val3')
+
+        mobile_number = request.user.username
+        #account_number = request.user.user_params some parsing and try if current user is super user or what.
+
+        response = get_grid_response(mobile_number, account_number, val1, val2, val3)
+
+        data = {}
+        data["success"] = "1"
+        return Response(data=data)
+
+VerifyGrid = VerifyGridAPIView.as_view()
+
+--------------------------------------------------------------------------------
+
+apis.py
+
+def get_grid_response(mobile_number, account_number, val1, val2, val3):
+    user_id = get_user_id(mobile_number)
+    #user_id = "1212"
+    input_query = """<XML>
+			    <ProcCode>plugin5001</ProcCode>
+			    <MessageType>1200</MessageType>
+			    <DeliveryChannelCtrlId>RIB</DeliveryChannelCtrlId>
+			    <LocalDateTimeStamp>20150315130211</LocalDateTimeStamp>
+			    <STAN>202304</STAN>
+			    <inputtype>A</inputtype>
+			    <input>660160003894</input>
+			<validation>
+			    <value offset="13">3</value>
+			    <value offset="14">2</value>
+			    <value offset="15">0</value>
+			    <value offset="16">9</value>
+			    <value offset="21">5</value>
+			    <value offset="22">2</value>
+			</validation>
+			 <REMARK></REMARK>
+			</XML>"""
+
+    #response = call_api(input_query)
+    #print(response)
+    #account_numbers = parse_account_numbers(response)
+    
+    return account_numbers
