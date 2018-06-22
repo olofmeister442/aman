@@ -1,0 +1,31 @@
+user_params = json.loads(get_user_from_access_token(access_token).user_params)
+temp_list = []
+if nick_1 != "" and mob_1 !="":
+    temp_tuple = (nick_1, mob_1)
+    temp_list.append(temp_tuple)
+if nick_2 != "" and mob_2 !="":
+    temp_tuple = (nick_2, mob_2)
+    temp_list.append(temp_tuple)
+if nick_3 != "" and mob_3 !="":
+    temp_tuple = (nick_3, mob_3)
+    temp_list.append(temp_tuple)
+if nick_4 != "" and mob_4 !="":
+    temp_tuple = (nick_4, mob_4)
+    temp_list.append(temp_tuple)
+    
+RechargeNameMatch 
+user_params = json.loads(get_user_from_access_token(access_token).user_params)
+nick_list = []
+mob_list = []
+if nick_1 != "" and mob_1 !="":
+    nick_list.append(nick_1)
+    mob_list.append(mob_1)
+if nick_2 != "" and mob_2 !="":
+    nick_list.append(nick_2)
+    mob_list.append(mob_2)
+if nick_3 != "" and mob_3 !="":
+    nick_list.append(nick_3)
+    mob_list.append(mob_3)
+if nick_4 != "" and mob_4 !="":
+    nick_list.append(nick_4)
+    mob_list.append(mob_4)
