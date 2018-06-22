@@ -253,3 +253,17 @@ def get_grid_response(mobile_number, account_number, val1, val2, val3):
     #account_numbers = parse_account_numbers(response)
     
     return account_numbers
+-----------------------------------------------------------------------------
+	
+	OTP Service Updation
+	1) For registration
+   <CHANNEL>5</CHANNEL>
+  <APPLICATION_NAME>67</APPLICATION_NAME>
+  <TRANSACTION_CODE>127</TRANSACTION_CODE>
+ 
+  2) For Online purchase:
+   <CHANNEL>5</CHANNEL>
+  <APPLICATION_NAME>67</APPLICATION_NAME>
+<TRANSACTION_CODE>128</TRANSACTION_CODE>
+
+Live eOTP webservice URL: http://10.50.81.32:9001/OTPEngine/services/OTPWebService?wsdl
